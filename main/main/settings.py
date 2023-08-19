@@ -11,8 +11,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-import django_heroku
-import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -79,12 +77,13 @@ WSGI_APPLICATION = 'main.wsgi.application'
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "refSystem",
-        "USER": "postgres",
-        "PASSWORD": "192939",
-        "HOST": "localhost",
-        "PORT": "5433"
+        "POSTGRES_URL": "postgres://default:p4uRkdLZq1Pb@ep-white-cell-73368234-pooler.us-east-1.postgres.vercel-storage.com:5432/verceldb",
+        "POSTGRES_PRISMA_URL": "postgres://default:p4uRkdLZq1Pb@ep-white-cell-73368234-pooler.us-east-1.postgres.vercel-storage.com:5432/verceldb?pgbouncer=true&connect_timeout=15",
+        "POSTGRES_URL_NON_POOLING": "postgres://default:p4uRkdLZq1Pb@ep-white-cell-73368234.us-east-1.postgres.vercel-storage.com:5432/verceldb",
+        "POSTGRES_USER": "default",
+        "POSTGRES_HOST": "ep-white-cell-73368234-pooler.us-east-1.postgres.vercel-storage.com",
+        "POSTGRES_PASSWORD": "p4uRkdLZq1Pb",
+        "POSTGRES_DATABASE": "verceldb",
     }
 }
 
@@ -134,5 +133,3 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'refSystem.CustomUser'
-
-django_heroku.settings(locals())
